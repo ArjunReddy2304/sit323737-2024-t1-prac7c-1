@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Microservice</title>
+</head>
+<body>
+    <h1>Calculator Microservice</h1>
+    <form id="calculator">
+        <input type="number" id="num1" placeholder="Number 1" required>
+        <select id="operation">
+            <option value="add">Add</option>
+            </select>
+        <input type="number" id="num2" placeholder="Number 2" required>
+        <button type="submit">Calculate</button>
+    </form>
+    <h2>Result: <span id="result">?</span></h2>
+
+    <script>
+        document.getElementById('calculator').onsubmit = function(event) {
+            event.preventDefault();
+
+            // Get the input values
+            var num1 = parseFloat(document.getElementById('num1').value);
+            var num2 = parseFloat(document.getElementById('num2').value);
+            var operation = document.getElementById('operation').value;
+
+            // Prepare the request
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'http://localhost:3000/' + operation, true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    var response = JSON.parse(xhr.responseText);
+                    document.getElementById('result').textContent = response.result;
+                } else {
+                    document.getElementById('result').textContent = 'Error!';
+                }
+            };
+
+            // Send the request
+            xhr.send(JSON.stringify({ num1: num1, num2: num2 }));
+        };
+    </script>
+</body>
+</html>
