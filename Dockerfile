@@ -17,4 +17,8 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to run the app
+<<<<<<< HEAD
 CMD ["node", "index.js"]
+=======
+CMD [ "node", "index.js" ]
+>>>>>>> d9c3e3b5fb40011a5e8885e3557bace0c2399628
