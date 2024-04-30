@@ -14,6 +14,8 @@ spec:
     spec:
       containers:
       - name: calculator
-        image: username/calculator:latest
+        image: arjunreddy2304/calculator:latest  # Replace with your Docker Hub username/image name:tag
         ports:
         - containerPort: 3000
+      imagePullSecrets:
+      - name: regcred  # The name of the created secret
