@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mongo-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce  # Access mode depends on your Persistent Volume setup
+  resources:
+    requests:
+      storage: 1Gi  # Size can be adjusted as required
