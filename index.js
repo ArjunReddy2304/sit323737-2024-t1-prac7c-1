@@ -12,7 +12,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // MongoDB connection details
-const uri = "mongodb+srv://SIT737Project:dsgLY0XqaghNHIKR@cluster0.yosuevd.mongodb.net/?retryWrites=true&w=majority";
+const uri = "mongodb://admin:password@mongo-service.default.svc.cluster.local:27017/SIT737?retryWrites=true&w=majority";
 const client = new MongoClient(uri);
 
 // Configure Winston for logging

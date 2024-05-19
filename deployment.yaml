@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: calculator-deployment
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: calculator
@@ -14,8 +14,6 @@ spec:
     spec:
       containers:
       - name: calculator
-        image: arjunreddy2304/calculator:latest  # Replace with your Docker Hub username/image name:tag
+        image: arjunreddy2304/calculator-app
         ports:
         - containerPort: 3000
-      imagePullSecrets:
-      - name: regcred  # The name of the created secret
